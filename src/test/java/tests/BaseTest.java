@@ -1,10 +1,11 @@
 package tests;
 
 import Pages.CartPage;
+import Pages.HeaderPage;
 import Pages.LoginPage;
 import Pages.ProductsPage;
-import constants.IConstants;
-import constants.ITestConstants;
+import Constants.IConstants;
+import Constants.ITestConstants;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -19,6 +20,7 @@ public class BaseTest implements IConstants, ITestConstants {
     LoginPage loginPage;
     ProductsPage productsPage;
     CartPage cartPage;
+    HeaderPage headerPage;
 
     @BeforeMethod
     public void initTest() {
@@ -33,6 +35,7 @@ public class BaseTest implements IConstants, ITestConstants {
         loginPage = new LoginPage(driver);
         productsPage = new ProductsPage(driver);
         cartPage = new CartPage(driver);
+        headerPage = new HeaderPage(driver);
     }
 
     @AfterMethod

@@ -1,6 +1,6 @@
 package Pages;
 
-import constants.IConstants;
+import Constants.IConstants;
 import org.openqa.selenium.WebDriver;
 
 public abstract class BasePage implements IConstants {
