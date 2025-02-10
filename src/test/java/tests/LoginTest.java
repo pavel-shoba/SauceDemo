@@ -4,7 +4,6 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class LoginTest extends BaseTest {
-
     public static final String EMPTY_FIELD_USERNAME_ERROR = "Epic sadface: Username is required";
     public static final String EMPTY_FIELD_PASSWORD_ERROR = "Epic sadface: Password is required";
     public static final String INCORRECT_DATA_IN_FIELDS = "Epic sadface: Username and password do not match any user in this service";

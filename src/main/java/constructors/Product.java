@@ -1,7 +1,6 @@
-package Constructors;
+package constructors;
 
 public class Product {
-
     private String name;
     private String description;
     private String price;

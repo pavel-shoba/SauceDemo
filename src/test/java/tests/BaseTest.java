@@ -1,21 +1,19 @@
 package tests;
 
-import Pages.CartPage;
-import Pages.HeaderPage;
-import Pages.LoginPage;
-import Pages.ProductsPage;
-import Constants.IConstants;
-import Constants.ITestConstants;
+import pages.CartPage;
+import pages.HeaderPage;
+import pages.LoginPage;
+import pages.ProductsPage;
+import constants.IConstants;
+import constants.ITestConstants;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
-
 import java.util.concurrent.TimeUnit;
 
 public class BaseTest implements IConstants, ITestConstants {
-
     WebDriver driver;
     LoginPage loginPage;
     ProductsPage productsPage;
