@@ -37,7 +37,7 @@ public class LoginTest extends BaseTest {
     }
 
     @Test(description = "QA-5 This test login on site with valid username and password")
-    public void loginWithValidUser() {
+    public void loginWithValidUserTest() {
         loginPage.openPage(LOGIN_PAGE_URL);
         loginPage.login(USERNAME, PASSWORD);
         productsPage.checkProductsAvailability();

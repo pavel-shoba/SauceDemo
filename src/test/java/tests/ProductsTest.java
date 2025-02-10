@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 
 public class ProductsTest extends BaseTest {
     @Test(description = "QA-6 Check data of product")
-    public void checkDataProducts() {
+    public void checkDataProductNotEmptyTest() {
         loginPage.openPage(LOGIN_PAGE_URL);
         loginPage.login(USERNAME, PASSWORD);
         Product product = productsPage.getDataItem(0);
@@ -17,7 +17,7 @@ public class ProductsTest extends BaseTest {
     }
 
     @Test(description = "QA-7 Add first item in cart")
-    public void addProductInCart() {
+    public void addProductInCartTest() {
         loginPage.openPage(LOGIN_PAGE_URL);
         loginPage.login(USERNAME, PASSWORD);
         String productName = productsPage.getDataItem(0).getName();
