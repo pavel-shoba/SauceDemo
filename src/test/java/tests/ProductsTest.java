@@ -1,26 +1,29 @@
 package tests;
 
 import constructors.Product;
+import org.assertj.core.api.SoftAssertions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class ProductsTest extends BaseTest {
     @Test(description = "QA-6 Check data of product")
     public void checkDataProductNotEmptyTest() {
+        SoftAssertions softly = new SoftAssertions();
         loginPage.openPage(LOGIN_PAGE_URL);
         loginPage.login(USERNAME, PASSWORD);
-        Product product = productsPage.getDataItem(0);
-        Assert.assertNotNull(product, "Product not found");
-        Assert.assertFalse(product.getName().isEmpty(), "Name is empty");
-        Assert.assertFalse(product.getDescription().isEmpty(), "Description is empty");
-        Assert.assertFalse(product.getPrice().isEmpty(), "Price is empty");
+        Product product = productsPage.getProductByIndex(0);
+        softly.assertThat(product).isNotNull().as("Product not found");
+        softly.assertThat(product.getName()).isNotEmpty().as("Name is empty");
+        softly.assertThat(product.getDescription()).isNotEmpty().as("Description is empty");
+        softly.assertThat(product.getPrice()).isNotEmpty().as("Price is empty");
+        softly.assertAll();
     }
 
     @Test(description = "QA-7 Add first item in cart")
     public void addProductInCartTest() {
         loginPage.openPage(LOGIN_PAGE_URL);
         loginPage.login(USERNAME, PASSWORD);
-        String productName = productsPage.getDataItem(0).getName();
+        String productName = productsPage.getProductByIndex(0).getName();
         productsPage.addProductToCart(productName);
         productsPage.removeButtonIsVisible();
         Assert.assertEquals(headerPage.getProductsCountInCart(), "1");
