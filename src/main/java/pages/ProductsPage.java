@@ -13,7 +13,7 @@ public class ProductsPage extends HeaderPage {
     public static final By PRODUCT_DESCRIPTION = By.xpath("//*[@data-test=\"inventory-item-desc\"]");
     public static final By PRODUCT_PRICE = By.xpath("//*[@data-test=\"inventory-item-price\"]");
     public static final By REMOVE_PRODUCT_BUTTON = By.xpath("//*[contains(text(),'Remove')]");
-    private By productAddCartButton;
+    private String productAddCartButton = "//div[contains(text(), '%s')]/ancestor::div/div/button";;
 
     public ProductsPage(WebDriver driver) {
         super(driver);
@@ -38,9 +38,7 @@ public class ProductsPage extends HeaderPage {
     }
 
     public void addProductToCart(String productName) {
-        String xpath = "//div[contains(text(), '%s')]/ancestor::div/div/button";
-        productAddCartButton = By.xpath(String.format(xpath, productName));
-        driver.findElement(productAddCartButton).click();
+        driver.findElement(By.xpath(String.format(productAddCartButton, productName))).click();
     }
 
     public boolean removeButtonIsVisible() {
