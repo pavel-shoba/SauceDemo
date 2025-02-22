@@ -4,6 +4,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class HeaderPage extends BasePage {
+    /**
+     * Methods and locators for Header page
+     */
     public static final By CART_BUTTON = By.xpath("//*[@data-test='shopping-cart-link']");
     public static final By CART_BADGE = By.xpath("//*[@data-test='shopping-cart-badge']");
 

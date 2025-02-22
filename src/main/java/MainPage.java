@@ -6,7 +6,9 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import java.util.List;
 
 public class MainPage {
-
+    /**
+     * Deprecated webelements, not using in current project
+     */
     WebDriver driver = new ChromeDriver();
     private final WebElement userName = driver.findElement(By.id("user-name"));
     private final WebElement password = driver.findElement(By.name("password"));

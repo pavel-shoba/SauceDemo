@@ -1,15 +1,19 @@
 package tests;
 
 import org.assertj.core.api.SoftAssertions;
-import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class CartTest extends BaseTest {
+    /**
+     * Here tests to check cart
+     */
     @Test(description = "QA-8 Check empty state for cart")
     public void checkEmptyCart() {
         SoftAssertions softly = new SoftAssertions();
         loginPage.openPage(LOGIN_PAGE_URL);
-        loginPage.login(USERNAME, PASSWORD);
+        loginPage
+                .waitForPageOpened()
+                .login(USERNAME, PASSWORD);
         headerPage.clickCartButton();
         softly.assertThat(headerPage.isBadgeVisible()).isTrue().as("Badge is not visible");
         softly.assertThat(cartPage.isCartEmpty()).isTrue().as("Cart is not empty");
@@ -20,7 +24,9 @@ public class CartTest extends BaseTest {
     public void checkAddingProductToCart() {
         SoftAssertions softly = new SoftAssertions();
         loginPage.openPage(LOGIN_PAGE_URL);
-        loginPage.login(USERNAME, PASSWORD);
+        loginPage
+                .waitForPageOpened()
+                .login(USERNAME, PASSWORD);
         String productName = productsPage.getProductByIndex(0).getName();
         productsPage.addProductToCart(productName);
         headerPage.clickCartButton();
@@ -34,7 +40,9 @@ public class CartTest extends BaseTest {
     public void checkDeletingProductFromCart() {
         SoftAssertions softly = new SoftAssertions();
         loginPage.openPage(LOGIN_PAGE_URL);
-        loginPage.login(USERNAME, PASSWORD);
+        loginPage
+                .waitForPageOpened()
+                .login(USERNAME, PASSWORD);
         String productName = productsPage.getProductByIndex(0).getName();
         productsPage.addProductToCart(productName);
         headerPage.clickCartButton();

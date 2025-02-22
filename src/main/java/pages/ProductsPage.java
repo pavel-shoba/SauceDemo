@@ -8,6 +8,9 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 public class ProductsPage extends HeaderPage {
+    /**
+     * Methods and locators for Product page
+     */
     public static final By PRODUCTS_LIST = By.className("inventory_list");
     public static final By PRODUCT_NAME = By.xpath("//*[@data-test=\"inventory-item-name\"]");
     public static final By PRODUCT_DESCRIPTION = By.xpath("//*[@data-test=\"inventory-item-desc\"]");
@@ -37,8 +40,9 @@ public class ProductsPage extends HeaderPage {
         return new Product(name, description, price);
     }
 
-    public void addProductToCart(String productName) {
+    public ProductsPage addProductToCart(String productName) {
         driver.findElement(By.xpath(String.format(productAddCartButton, productName))).click();
+        return this;
     }
 
     public boolean removeButtonIsVisible() {

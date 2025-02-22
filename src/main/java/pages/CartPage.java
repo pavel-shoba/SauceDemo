@@ -4,6 +4,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class CartPage extends HeaderPage {
+    /**
+     * Methods and locators for Cart page
+     */
     public static final By CART_ITEM = By.xpath("//*[@data-test='inventory-item']");
     private String removeButton = "//div[contains(text(),'%s')]/ancestor::div//button[contains(text(), 'Remove')]";;
 

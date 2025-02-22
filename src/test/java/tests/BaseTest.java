@@ -1,9 +1,6 @@
 package tests;
 
-import pages.CartPage;
-import pages.HeaderPage;
-import pages.LoginPage;
-import pages.ProductsPage;
+import pages.*;
 import constants.IConstants;
 import constants.ITestConstants;
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -19,7 +16,11 @@ public class BaseTest implements IConstants, ITestConstants {
     ProductsPage productsPage;
     CartPage cartPage;
     HeaderPage headerPage;
+    LoginPageFactory loginPageFactory;
 
+    /**
+     * This is initialization of pages
+     */
     @BeforeMethod
     public void initTest() {
         WebDriverManager.chromedriver().setup();
@@ -34,6 +35,7 @@ public class BaseTest implements IConstants, ITestConstants {
         productsPage = new ProductsPage(driver);
         cartPage = new CartPage(driver);
         headerPage = new HeaderPage(driver);
+        loginPageFactory = new LoginPageFactory(driver);
     }
 
     @AfterMethod
