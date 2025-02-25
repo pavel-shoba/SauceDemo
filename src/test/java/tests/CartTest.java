@@ -28,8 +28,9 @@ public class CartTest extends BaseTest {
                 .waitForPageOpened()
                 .login(USERNAME, PASSWORD);
         String productName = productsPage.getProductByIndex(0).getName();
-        productsPage.addProductToCart(productName);
-        headerPage.clickCartButton();
+        productsPage
+                    .addProductToCart(productName)
+                    .clickCartButton();
         softly.assertThat(headerPage.getProductsCountInCart()).isEqualTo("1");
         softly.assertThat(cartPage.isCartEmpty()).isFalse();
         softly.assertThat(productName).isNotEmpty();
@@ -44,9 +45,10 @@ public class CartTest extends BaseTest {
                 .waitForPageOpened()
                 .login(USERNAME, PASSWORD);
         String productName = productsPage.getProductByIndex(0).getName();
-        productsPage.addProductToCart(productName);
-        headerPage.clickCartButton();
-        cartPage.deleteItemFromCart(productName);
+        productsPage
+                .addProductToCart(productName)
+                .clickCartButton()
+                .deleteItemFromCart(productName);
         softly.assertThat(headerPage.isBadgeVisible()).isTrue().as("Badge is not visible");
         softly.assertThat(cartPage.isCartEmpty()).isTrue().as("Cart is not empty");
         softly.assertAll();
