@@ -54,8 +54,8 @@ public class LoginTest extends Preconditions {
         loginPage.openPage(LOGIN_PAGE_URL);
         loginPage
                 .waitForPageOpened()
-                .login(user)
-                .checkProductsAvailability();
+                .login(user);
+        Assert.assertTrue(productsPage.checkProductsAvailability(), "Products should be visible");
     }
 
     /**

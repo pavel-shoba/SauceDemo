@@ -31,9 +31,8 @@ public class ProductsTest extends BaseTest {
                 .waitForPageOpened()
                 .login(USERNAME, PASSWORD);
         String productName = productsPage.getProductByIndex(0).getName();
-        productsPage
-                .addProductToCart(productName)
-                .removeButtonIsVisible();
+        productsPage.addProductToCart(productName);
+        Assert.assertTrue(productsPage.removeButtonIsVisible(), "Remove button should be visible");
         Assert.assertEquals(headerPage.getProductsCountInCart(), "1");
     }
 }
