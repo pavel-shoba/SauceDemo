@@ -1,6 +1,9 @@
 package constructors;
 
 public class Product {
+    /**
+     * Constructor for product object
+     */
     private String name;
     private String description;
     private String price;

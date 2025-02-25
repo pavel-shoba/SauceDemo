@@ -15,10 +15,16 @@ public class ProductsPage extends HeaderPage {
     public static final By REMOVE_PRODUCT_BUTTON = By.xpath("//*[contains(text(),'Remove')]");
     private String productAddCartButton = "//div[contains(text(), '%s')]/ancestor::div/div/button";;
 
+    /**
+     * Method to initialize driver for Products page
+     */
     public ProductsPage(WebDriver driver) {
         super(driver);
     }
 
+    /**
+     * Method to check products are visible on page
+     */
     public boolean checkProductsAvailability() {
         try {
             return driver.findElement(PRODUCTS_LIST).isDisplayed();
@@ -27,6 +33,9 @@ public class ProductsPage extends HeaderPage {
         }
     }
 
+    /**
+     * Method to get product by index
+     */
     public Product getProductByIndex(int index) {
         List<WebElement> productNames = driver.findElements(PRODUCT_NAME);
         List<WebElement> productDescs = driver.findElements(PRODUCT_DESCRIPTION);
@@ -37,10 +46,17 @@ public class ProductsPage extends HeaderPage {
         return new Product(name, description, price);
     }
 
-    public void addProductToCart(String productName) {
+    /**
+     * Method to add product to cart
+     */
+    public ProductsPage addProductToCart(String productName) {
         driver.findElement(By.xpath(String.format(productAddCartButton, productName))).click();
+        return this;
     }
 
+    /**
+     * Method to check that "Remove" button is visible
+     */
     public boolean removeButtonIsVisible() {
         try {
             return driver.findElement(REMOVE_PRODUCT_BUTTON).isDisplayed();

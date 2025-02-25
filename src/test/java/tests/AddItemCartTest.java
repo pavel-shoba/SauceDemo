@@ -11,31 +11,33 @@ import java.time.Duration;
 import java.util.List;
 
 public class AddItemCartTest {
-
-    @Test
-    public void addItemToCartAndCheckData() {
-        System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver");
-        WebDriver driver = new ChromeDriver();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-        String userName = "standard_user";
-        String password = "secret_sauce";
-        driver.get("https://www.saucedemo.com/");
-        driver.findElement(By.id("user-name")).sendKeys(userName);
-        driver.findElement(By.name("password")).sendKeys(password);
-        driver.findElement(By.className("submit-button")).click();
-        List<WebElement> products = driver.findElements(By.xpath("//*[@data-test=\"inventory-item-name\"]"));
-        List<WebElement> productPrices = driver.findElements(By.xpath("//*[@data-test=\"inventory-item-price\"]"));
-        String productName = products.get(0).getText();
-        String productPrice = productPrices.get(0).getText();
-        String xpathAddProduct = "//div[contains(text(), '" + productName + "')]/ancestor::div/div/button";
-        driver.findElement(By.xpath(xpathAddProduct)).click();
-        driver.findElement(By.id("shopping_cart_container")).click();
-        List<WebElement> productsInCart = driver.findElements(By.xpath("//*[@data-test=\"inventory-item-name\"]"));
-        List<WebElement> productPricesInCart = driver.findElements(By.xpath("//*[@data-test=\"inventory-item-price\"]"));
-        String productNameInCart = productsInCart.get(0).getText();
-        String productPriceInCart = productPricesInCart.get(0).getText();
-        Assert.assertEquals(productNameInCart, productName);
-        Assert.assertEquals(productPriceInCart, productPrice);
-        driver.quit();
-    }
+/**
+ * Initial depcrecated test without page object model(a new one was created in CartTest)
+ */
+//    @Test
+//    public void addItemToCartAndCheckData() {
+//        System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver");
+//        WebDriver driver = new ChromeDriver();
+//        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+//        String userName = "standard_user";
+//        String password = "secret_sauce";
+//        driver.get("https://www.saucedemo.com/");
+//        driver.findElement(By.id("user-name")).sendKeys(userName);
+//        driver.findElement(By.name("password")).sendKeys(password);
+//        driver.findElement(By.className("submit-button")).click();
+//        List<WebElement> products = driver.findElements(By.xpath("//*[@data-test=\"inventory-item-name\"]"));
+//        List<WebElement> productPrices = driver.findElements(By.xpath("//*[@data-test=\"inventory-item-price\"]"));
+//        String productName = products.get(0).getText();
+//        String productPrice = productPrices.get(0).getText();
+//        String xpathAddProduct = "//div[contains(text(), '" + productName + "')]/ancestor::div/div/button";
+//        driver.findElement(By.xpath(xpathAddProduct)).click();
+//        driver.findElement(By.id("shopping_cart_container")).click();
+//        List<WebElement> productsInCart = driver.findElements(By.xpath("//*[@data-test=\"inventory-item-name\"]"));
+//        List<WebElement> productPricesInCart = driver.findElements(By.xpath("//*[@data-test=\"inventory-item-price\"]"));
+//        String productNameInCart = productsInCart.get(0).getText();
+//        String productPriceInCart = productPricesInCart.get(0).getText();
+//        Assert.assertEquals(productNameInCart, productName);
+//        Assert.assertEquals(productPriceInCart, productPrice);
+//        driver.quit();
+//    }
 }

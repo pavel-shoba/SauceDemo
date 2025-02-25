@@ -1,6 +1,9 @@
 package constants;
 
 public interface ITestConstants {
+    /**
+     * Constants with name of products and user
+     */
     String USERNAME = "standard_user";
     String PASSWORD = "secret_sauce";
     String SAUCE_LABS_BACKPACK = "Sauce Labs Backpack";
