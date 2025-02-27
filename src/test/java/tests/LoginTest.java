@@ -15,46 +15,31 @@ public class LoginTest extends Preconditions {
      */
     @Test(description = "QA1 - This test login on site with empty username")
     public void loginWithEmptyUserNameTest() {
-        loginPage.openPage(LOGIN_PAGE_URL);
-        loginPage
-                .waitForPageOpened()
-                .login(userWithEmptyUsername);
+        loginSteps.loginAndWaitForPageOpened(userWithEmptyUsername);
         Assert.assertEquals(loginPage.getErrorMessageText(), EMPTY_FIELD_USERNAME_ERROR);
     }
 
     @Test(description = "QA-2 This test login on site with empty password")
     public void loginWithEmptyPasswordTest() {
-        loginPage.openPage(LOGIN_PAGE_URL);
-        loginPage
-                .waitForPageOpened()
-                .login(userWithEmptyPassword);
+        loginSteps.loginAndWaitForPageOpened(userWithEmptyPassword);
         Assert.assertEquals(loginPage.getErrorMessageText(), EMPTY_FIELD_PASSWORD_ERROR);
     }
 
     @Test(description = "QA-3 This test login on site with empty username and password")
     public void loginWithEmptyFieldsTest() {
-        loginPage.openPage(LOGIN_PAGE_URL);
-        loginPage
-                .waitForPageOpened()
-                .login(userWithEmptyFields);
+        loginSteps.loginAndWaitForPageOpened(userWithEmptyFields);
         Assert.assertEquals(loginPage.getErrorMessageText(), EMPTY_FIELD_USERNAME_ERROR);
     }
 
     @Test(description = "QA-4 This test login on site with incorrect username and password")
     public void loginWithIncorrectFieldsTest() {
-        loginPage.openPage(LOGIN_PAGE_URL);
-        loginPage
-                .waitForPageOpened()
-                .login(userWithIncorrectFields);
+        loginSteps.loginAndWaitForPageOpened(userWithIncorrectFields);
         Assert.assertEquals(loginPage.getErrorMessageText(), INCORRECT_DATA_IN_FIELDS);
     }
 
     @Test(description = "QA-5 This test login on site with valid username and password")
     public void loginWithValidUserTest() {
-        loginPage.openPage(LOGIN_PAGE_URL);
-        loginPage
-                .waitForPageOpened()
-                .login(user);
+        loginSteps.loginAndWaitForPageOpened(user);
         Assert.assertTrue(productsPage.checkProductsAvailability(), "Products should be visible");
     }
 
