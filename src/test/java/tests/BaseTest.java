@@ -1,5 +1,8 @@
 package tests;
 
+import listener.TestListener;
+import org.testng.ITestContext;
+import org.testng.annotations.Listeners;
 import steps.CartSteps;
 import steps.LoginSteps;
 import steps.ProductsSteps;
@@ -13,6 +16,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import java.util.concurrent.TimeUnit;
 
+@Listeners(TestListener.class)
 public class BaseTest implements IConstants, ITestConstants {
     WebDriver driver;
     LoginPage loginPage;
@@ -28,12 +32,13 @@ public class BaseTest implements IConstants, ITestConstants {
      * This is initialization of pages
      */
     @BeforeMethod
-    public void initTest() {
+    public void initTest(ITestContext iTestContext) {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         initPages();
+        iTestContext.setAttribute("driver", driver);
     }
 
     public void initPages() {

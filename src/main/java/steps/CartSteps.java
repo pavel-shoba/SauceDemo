@@ -1,6 +1,7 @@
 package steps;
 
 import io.qameta.allure.Step;
+import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.WebDriver;
 import pages.CartPage;
 import pages.HeaderPage;
@@ -8,7 +9,7 @@ import pages.LoginPage;
 import pages.ProductsPage;
 
 import static constants.IConstants.LOGIN_PAGE_URL;
-
+@Log4j2
 public class CartSteps {
     private ProductsPage productsPage;
     private CartPage cartPage;
@@ -27,6 +28,7 @@ public class CartSteps {
         productsPage
                     .addProductToCart(productName)
                     .clickCartButton();
+        log.info("The product {} was added in cart and open cart", productName);
         return this;
     }
 
@@ -36,6 +38,7 @@ public class CartSteps {
                 .addProductToCart(productName)
                 .clickCartButton()
                 .deleteItemFromCart(productName);
+        log.info("The product {} was added in cart and delete from there", productName);
         return this;
     }
 
@@ -46,6 +49,7 @@ public class CartSteps {
                 .waitForPageOpened()
                 .login(username, password);
         productsPage.clickCartButton();
+        log.info("Opened cart page with empty state");
         return this;
     }
 }

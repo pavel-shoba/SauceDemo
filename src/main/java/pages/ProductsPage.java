@@ -1,12 +1,14 @@
 package pages;
 
 import constructors.Product;
+import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import java.util.List;
 import java.util.NoSuchElementException;
 
+@Log4j2
 public class ProductsPage extends HeaderPage {
     public static final By PRODUCTS_LIST = By.className("inventory_list");
     public static final By PRODUCT_NAME = By.xpath("//*[@data-test=\"inventory-item-name\"]");
@@ -51,6 +53,7 @@ public class ProductsPage extends HeaderPage {
      */
     public ProductsPage addProductToCart(String productName) {
         driver.findElement(By.xpath(String.format(productAddCartButton, productName))).click();
+        log.info("The product {} was added in cart", productName);
         return this;
     }
 
