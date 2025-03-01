@@ -1,5 +1,8 @@
 package tests;
 
+import steps.CartSteps;
+import steps.LoginSteps;
+import steps.ProductsSteps;
 import pages.*;
 import constants.IConstants;
 import constants.ITestConstants;
@@ -17,6 +20,9 @@ public class BaseTest implements IConstants, ITestConstants {
     CartPage cartPage;
     HeaderPage headerPage;
     LoginPageFactory loginPageFactory;
+    ProductsSteps productsSteps;
+    LoginSteps loginSteps;
+    CartSteps cartSteps;
 
     /**
      * This is initialization of pages
@@ -36,6 +42,9 @@ public class BaseTest implements IConstants, ITestConstants {
         cartPage = new CartPage(driver);
         headerPage = new HeaderPage(driver);
         loginPageFactory = new LoginPageFactory(driver);
+        loginSteps = new LoginSteps(driver);
+        productsSteps = new ProductsSteps(driver);
+        cartSteps = new CartSteps(driver);
     }
 
     @AfterMethod
