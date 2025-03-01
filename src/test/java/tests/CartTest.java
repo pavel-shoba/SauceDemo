@@ -4,12 +4,12 @@ import org.assertj.core.api.SoftAssertions;
 import org.testng.annotations.Test;
 
 public class CartTest extends BaseTest {
+    SoftAssertions softly = new SoftAssertions();
     /**
      * Here tests to check cart
      */
     @Test(description = "QA-8 Check empty state for cart")
     public void checkEmptyCart() {
-        SoftAssertions softly = new SoftAssertions();
         cartSteps.loginAndOpenEmptyCart(USERNAME, PASSWORD);
         softly.assertThat(headerPage.isBadgeVisible()).isTrue().as("Badge is not visible");
         softly.assertThat(cartPage.isCartEmpty()).isTrue().as("Cart is not empty");
@@ -18,7 +18,6 @@ public class CartTest extends BaseTest {
 
     @Test(description = "QA-9 Add product to cart")
     public void checkAddingProductToCart() {
-        SoftAssertions softly = new SoftAssertions();
         loginSteps.loginAndWaitForPageOpened(USERNAME, PASSWORD);
         String productName = productsPage.getProductByIndex(0).getName();
         cartSteps.addProductToCartAndOpen(productName);
@@ -30,7 +29,6 @@ public class CartTest extends BaseTest {
 
     @Test(description = "QA-10 Delete product from cart")
     public void checkDeletingProductFromCart() {
-        SoftAssertions softly = new SoftAssertions();
         loginSteps.loginAndWaitForPageOpened(USERNAME, PASSWORD);
         String productName = productsPage.getProductByIndex(0).getName();
         cartSteps.addProductToCartAndDelete(productName);
