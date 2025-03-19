@@ -1,6 +1,7 @@
 package tests;
 
 import listener.TestListener;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.ITestContext;
 import org.testng.annotations.Listeners;
 import steps.CartSteps;
@@ -34,7 +35,9 @@ public class BaseTest implements IConstants, ITestConstants {
     @BeforeMethod
     public void initTest(ITestContext iTestContext) {
         WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--headless");
+        driver = new ChromeDriver(options);
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         initPages();
